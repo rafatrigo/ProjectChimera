@@ -7,9 +7,13 @@ extends CharacterBody3D
 @export var move_speed := 8.0
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
+@export var jump_impulse := 12.0
+@export var running_multiplier := 2.0
+@export var friction := 90.0
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
+var _gravity := -30.0
 
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
@@ -54,8 +58,30 @@ func _physics_process(delta: float) -> void:
 	move_direction.y = 0.0 # make sure that the character is moving parallel to the ground
 	move_direction = move_direction.normalized()
 	
-	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
+	# vertical velocity
+	var y_velocity := velocity.y
+	velocity.y = 0.0
 	
+	# running
+	var current_speed = move_speed
+	if Input.is_action_pressed("running"):
+		current_speed *= running_multiplier
+	
+	# calculate the velocity without the vertical velocity
+	# if is moving the use the acceleration value otherwise use the friction value (to avoid the slide effect)
+	if move_direction.length() > 0:
+		velocity = velocity.move_toward(move_direction * current_speed, acceleration * delta)
+	else:
+		velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+		
+	# calculate vertical velocity
+	velocity.y = y_velocity + _gravity * delta
+		
+	# jump
+	var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
+	if is_starting_jump:
+		velocity.y += jump_impulse
+
 	move_and_slide()
 	
 	## SKIN MOVEMENT ##

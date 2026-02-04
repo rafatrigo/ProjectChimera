@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bhbj4u2ndley2"]
+
+[ext_resource type="Script" uid="uid://dfi8naco6gopk" path="res://scripts/dev_cam.gd" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://bniy46um5dio6" path="res://models/demo/medieval_chest/scene.gltf" id="2_8uh7m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_37kl0"]
+
+[node name="CameraNode" type="Node3D" unique_id=1189672813]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=299786084]
+motion_mode = 1
+script = ExtResource("1_37kl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1782756346]
+shape = SubResource("SphereShape3D_37kl0")
+
+[node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=577458133]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/CameraPivot" unique_id=319409111]
+unique_name_in_owner = true
+
+[node name="TestChest" type="Node3D" parent="." unique_id=368619081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.010865)
+
+[node name="Sketchfab_Scene" parent="TestChest" unique_id=829587435 instance=ExtResource("2_8uh7m")]

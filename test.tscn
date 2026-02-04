@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bniy46um5dio6" path="res://models/demo/medieval_chest/scene.gltf" id="2_8uh7m"]
 [ext_resource type="Script" uid="uid://xrh8cp3cc7sc" path="res://scripts/scenery/interactable_script.gd" id="4_ppyta"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ppyta"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_37kl0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykrsh"]
@@ -20,12 +22,11 @@ script = ExtResource("1_37kl0")
 [node name="InteractionManager" type="Node3D" parent="CharacterBody3D" unique_id=1491323174]
 script = ExtResource("2_6uqi0")
 
-[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/InteractionManager" unique_id=411513847]
+[node name="ShapeCast3D" type="ShapeCast3D" parent="CharacterBody3D/InteractionManager" unique_id=1163500333]
+unique_name_in_owner = true
+shape = SubResource("SphereShape3D_ppyta")
 target_position = Vector3(0, 0, -3)
 collision_mask = 8
-hit_from_inside = true
-hit_back_faces = false
-collide_with_areas = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1782756346]
 shape = SubResource("SphereShape3D_37kl0")

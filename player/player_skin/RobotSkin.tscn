@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cajwngkcapqnj"]
+
+[ext_resource type="PackedScene" uid="uid://d06i7keqe424a" path="res://player/player_skin/model/animated_humanoid_robot.glb" id="1_d37up"]
+
+[node name="Sketchfab_Scene" unique_id=755838528 instance=ExtResource("1_d37up")]
+
+[node name="Skeleton3D" parent="Sketchfab_model/Root/ROBOT BONES" parent_id_path=PackedInt32Array(262673522) index="0" unique_id=496835250]
+bones/6/rotation = Quaternion(-0.53172004, 0.46601778, 0.44898653, 0.54636294)
+bones/7/rotation = Quaternion(-0.015833884, -0.0012340173, 0.07905231, 0.996744)
+bones/10/rotation = Quaternion(0, 0, 0.0035450396, 0.99999374)
+bones/13/rotation = Quaternion(0, 0, 0.0035450396, 0.99999374)
+bones/15/rotation = Quaternion(0, 0, 0.16186447, 0.986813)
+bones/17/rotation = Quaternion(-0.4357106, -0.35254803, -0.54265213, 0.62561566)
+bones/18/rotation = Quaternion(-0.00037530347, -0.19000547, -0.08062067, 0.9784672)
+bones/26/rotation = Quaternion(0, 0, -0.16186447, 0.986813)
+bones/28/rotation = Quaternion(0.70651853, 0.030159462, -0.70424324, -0.06295721)
+bones/29/rotation = Quaternion(-0.031009387, 0.704885, -0.0016536319, 0.7086416)
+bones/30/rotation = Quaternion(-0.4522993, 0, 0, 0.8918662)
+bones/31/rotation = Quaternion(0.7086613, 0.062768124, -0.7020867, -0.030554725)
+bones/32/rotation = Quaternion(0.0014573385, 0.7042037, 0.031018278, 0.7093186)
+bones/33/rotation = Quaternion(-0.4522993, 0, 0, 0.8918662)

@@ -14,10 +14,11 @@ extends CharacterBody3D
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
 var _gravity := -30.0
+var current_animation := "IDLE"
 
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
-@onready var _skin: Node3D = %RobotSkin
+@onready var _skin: RobotSkin = %RobotSkin
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -66,6 +67,13 @@ func _physics_process(delta: float) -> void:
 	var current_speed = move_speed
 	if Input.is_action_pressed("running"):
 		current_speed *= running_multiplier
+		if current_animation != "RUN":
+			_skin.run()
+			current_animation = "RUN"
+	elif move_direction.length() > 0 and current_animation != "WALK":
+		_skin.walk()
+		current_animation = "WALK"
+		
 	
 	# calculate the velocity without the vertical velocity
 	# if is moving the use the acceleration value otherwise use the friction value (to avoid the slide effect)
@@ -73,6 +81,9 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(move_direction * current_speed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector3.ZERO, friction * delta)
+		if velocity.length() < 0.1 and current_animation != "IDLE":
+			_skin.idle()
+			current_animation = "IDLE"
 		
 	# calculate vertical velocity
 	velocity.y = y_velocity + _gravity * delta
@@ -92,3 +103,4 @@ func _physics_process(delta: float) -> void:
 		
 	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
+	

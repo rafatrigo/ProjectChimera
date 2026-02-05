@@ -11,6 +11,13 @@ height = 12.77832
 
 [node name="Player3D" type="CharacterBody3D" unique_id=1832493593]
 script = ExtResource("1_a5lo2")
+mouse_sensitivity = null
+move_speed = null
+acceleration = null
+rotation_speed = null
+jump_impulse = null
+running_multiplier = null
+friction = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=400474901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.38916, 0)

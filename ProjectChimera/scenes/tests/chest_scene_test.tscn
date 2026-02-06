@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dfi8naco6gopk" path="res://scripts/dev_cam.gd" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://cdot0p1nln68j" path="res://scripts/player/interaction_manager.gd" id="2_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://bniy46um5dio6" path="res://models/demo/medieval_chest/scene.gltf" id="2_8uh7m"]
+[ext_resource type="Script" uid="uid://bxlqwkhlns2sr" path="res://scripts/test_cpp.gd" id="3_g6b1r"]
 [ext_resource type="Script" uid="uid://xrh8cp3cc7sc" path="res://scripts/scenery/interactable_script.gd" id="4_ppyta"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ppyta"]
@@ -40,6 +41,7 @@ unique_name_in_owner = true
 
 [node name="TestChest" type="Node3D" parent="." unique_id=368619081]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.010865)
+script = ExtResource("3_g6b1r")
 
 [node name="Sketchfab_Scene" parent="TestChest" unique_id=829587435 instance=ExtResource("2_8uh7m")]
 
